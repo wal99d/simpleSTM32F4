@@ -1,0 +1,7 @@
+rm *.o *.elf *.bin
+arm-none-eabi-gcc    -mthumb -mcpu=cortex-m4 -c -o pwm.o pwm.c
+arm-none-eabi-gcc    -c -o main.o main.S
+arm-none-eabi-gcc -T main.ld -mthumb -mcpu=cortex-m4 pwm.o main.o -o pwm.elf
+arm-none-eabi-objcopy -O binary pwm.elf pwm.bin
+#arm-none-eabi-as -mthumb -o main.o main.S
+#arm-none-eabi-ld -o main.elf -T main.ld main.o
